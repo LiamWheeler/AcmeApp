@@ -1,0 +1,9 @@
+C:\Users\CodeNation\Liam\CSharpBP-Basics-master\AcmeApp\Acme.Biz\bin\Debug\Acme.Biz.dll
+C:\Users\CodeNation\Liam\CSharpBP-Basics-master\AcmeApp\Acme.Biz\bin\Debug\Acme.Biz.pdb
+C:\Users\CodeNation\Liam\CSharpBP-Basics-master\AcmeApp\Acme.Biz\bin\Debug\Acme.Common.dll
+C:\Users\CodeNation\Liam\CSharpBP-Basics-master\AcmeApp\Acme.Biz\bin\Debug\Acme.Common.pdb
+C:\Users\CodeNation\Liam\CSharpBP-Basics-master\AcmeApp\Acme.Biz\obj\Debug\Acme.Biz.csprojAssemblyReference.cache
+C:\Users\CodeNation\Liam\CSharpBP-Basics-master\AcmeApp\Acme.Biz\obj\Debug\Acme.Biz.csproj.CoreCompileInputs.cache
+C:\Users\CodeNation\Liam\CSharpBP-Basics-master\AcmeApp\Acme.Biz\obj\Debug\Acme.Biz.csproj.CopyComplete
+C:\Users\CodeNation\Liam\CSharpBP-Basics-master\AcmeApp\Acme.Biz\obj\Debug\Acme.Biz.dll
+C:\Users\CodeNation\Liam\CSharpBP-Basics-master\AcmeApp\Acme.Biz\obj\Debug\Acme.Biz.pdb
