@@ -63,7 +63,7 @@ namespace Acme.Biz.Tests
             //arrange
             var vendor = new Vendor();
             var product = new Product(1, "Saw", "");
-            var expected = new OperationResult(true, "Order from Acme, Inc\r\nProduct: Tools-0001\r\nQuantity: 12" +
+            var expected = new OperationResult<bool>(true, "Order from Acme, Inc\r\nProduct: Tools-0001\r\nQuantity: 12" +
                                                 "\r\nInstructions: Standard delivery");
 
 
@@ -72,7 +72,7 @@ namespace Acme.Biz.Tests
 
             //Assert
 
-            Assert.AreEqual(expected.Success, actual.Success);
+            Assert.AreEqual(expected.Result, actual.Result);
             Assert.AreEqual(expected.Message, actual.Message);
         }
 
@@ -82,7 +82,7 @@ namespace Acme.Biz.Tests
             //arrange
             var vendor = new Vendor();
             var product = new Product(1, "Saw", "");
-            var expected = new OperationResult(true, "Order from Acme, Inc\r\nProduct:" +
+            var expected = new OperationResult<bool>(true, "Order from Acme, Inc\r\nProduct:" +
                 " Tools-0001\r\nQuantity: 12" + "\r\nDeliver By: 25/10/2019" +
                 "\r\nInstructions: Standard delivery");
 
@@ -93,7 +93,7 @@ namespace Acme.Biz.Tests
 
             //Assert
 
-            Assert.AreEqual(expected.Success, actual.Success);
+            Assert.AreEqual(expected.Result, actual.Result);
             Assert.AreEqual(expected.Message, actual.Message);
         }
 
@@ -116,13 +116,13 @@ namespace Acme.Biz.Tests
         {
             var vendor = new Vendor();
             var product = new Product(1, "Saw", "");
-            var expected = new OperationResult(true, "Test with Address");
+            var expected = new OperationResult<bool>(true, "Test with Address");
 
             var actual = vendor.PlaceOrder(product, 12,
                                            Vendor.IncludeAddress.Yes,
                                            Vendor.SendCopy.No);
 
-            Assert.AreEqual(expected.Success, actual.Success);
+            Assert.AreEqual(expected.Result, actual.Result);
             Assert.AreEqual(expected.Message, actual.Message);
         }
 
@@ -132,7 +132,7 @@ namespace Acme.Biz.Tests
             //arrange
             var vendor = new Vendor();
             var product = new Product(1, "Saw", "");
-            var expected = new OperationResult(true,
+            var expected = new OperationResult<bool>(true,
                 "Order from Acme, Inc\r\nProduct:" + " Tools-0001\r\nQuantity: 12" +
                 "\r\nInstructions: deliver to Suite 42");
 
@@ -143,7 +143,7 @@ namespace Acme.Biz.Tests
 
             //Assert
 
-            Assert.AreEqual(expected.Success, actual.Success);
+            Assert.AreEqual(expected.Result, actual.Result);
             Assert.AreEqual(expected.Message, actual.Message);
         }
 
