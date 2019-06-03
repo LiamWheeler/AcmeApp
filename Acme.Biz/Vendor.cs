@@ -85,7 +85,7 @@ namespace Acme.Biz
 
         public override string ToString()
         {
-            string vendorInfo = "Vendor: " + this.CompanyName;
+            string vendorInfo = $"Vendor: {this.CompanyName} ({this.VendorId})";
             string result;
             result = vendorInfo?.ToLower();
             result = vendorInfo?.ToUpper();
@@ -104,7 +104,31 @@ namespace Acme.Biz
             return directions;
         }
 
+        /// <summary>
+        /// Overridden to support comparison
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            if (obj == null || this.GetType() != obj.GetType())
+                return false;
 
+            Vendor compareVendor = obj as Vendor;
+            if (compareVendor != null &&
+                this.VendorId == compareVendor.VendorId &&
+                this.CompanyName == compareVendor.CompanyName &&
+                this.Email == compareVendor.Email)
+                return true;
+
+            return base.Equals(obj);
+
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
 
         /// <summary>
