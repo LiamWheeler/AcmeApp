@@ -144,5 +144,25 @@ namespace Acme.Biz
                                                         this.Email);
             return confirmation;
         }
+
+        /// <summary>
+        /// Sends an email to a set of vendors
+        /// </summary>
+        /// <param name="vendors">Collection of vendors</param>
+        /// <param name="message">Message to send</param>
+        /// <returns></returns>
+        public static List<string> SendEmail(ICollection<Vendor> vendors, string message)
+        {
+            var confirmations = new List<string>();
+            var emailService = new EmailService();
+            Console.WriteLine(vendors.Count); //for debugging purposes
+            foreach (var vendor in vendors)
+            {
+                var subject = "Important message for: " + vendor.CompanyName;
+                var confirmation = emailService.SendMessage(subject, message, vendor.Email);
+                confirmations.Add(confirmation);
+            }
+            return confirmations;
+        }
     }
 }

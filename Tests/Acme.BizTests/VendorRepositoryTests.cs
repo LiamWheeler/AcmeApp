@@ -65,11 +65,11 @@ namespace Acme.Biz.Tests
             var actual = repository.Retrieve();
 
             //Assert
-            Assert.AreEqual(expected, actual.Count);
+            Assert.AreEqual(expected, actual.Count());
         }
 
         [TestMethod()]
-        public void RetrieveElementsTest()
+        public void RetrieveTest()
         {
             //Arrange
             var repository = new VendorRepository();
@@ -81,28 +81,37 @@ namespace Acme.Biz.Tests
             var actual = repository.Retrieve();
 
             //Assert
-            CollectionAssert.AreEqual(expected, actual);
+            CollectionAssert.AreEqual(expected, actual.ToList());
         }
 
         [TestMethod()]
-        public void RetrieveWithKeysTest()
+        public void RetrieveWithIteratorTest()
         {
             //Arrange
             var repository = new VendorRepository();
-            var expected = new Dictionary<string, Vendor>()
+            var expected = new List<Vendor>()
             {
-                                {"ABC Inc", new Vendor()
-                {VendorId = 1, CompanyName = "ABC Inc", Email = "abc@abc.com" } },
-                {"XYZ Inc", new Vendor()
-                {VendorId = 2, CompanyName = "XYZ Inc", Email = "xyz@xyz.com" } }
+                {new Vendor()
+                {VendorId = 1, CompanyName = "ABC Inc", Email = "abc@abc.com"  } },
+                {new Vendor()
+                { VendorId = 2, CompanyName = "XYZ Inc", Email = "xyz@xyz.com" }}
             };
+ 
+
 
             //Act
-            var actual = repository.RetrieveWithKeys();
+            var vendorIterator = repository.RetrieveWithIterator();
+            foreach (var item in vendorIterator)
+            {
+                Console.WriteLine(item);
+            }
+            var actual = vendorIterator.ToList();
 
             //Assert
-            CollectionAssert.AreEqual(expected, actual);
-          
+            CollectionAssert.AreEqual(expected, actual.ToList());
         }
+
+
+
     }
 }

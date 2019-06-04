@@ -165,11 +165,75 @@ namespace Acme.Biz.Tests
         {
             var vendor = new Vendor();
             var expected = @"Insert \r\n to define a new line";
-            
+
             var actual = vendor.PrepareDirections();
             Console.WriteLine(actual);
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void SendEmailTest()
+        {
+            //Arrange
+            var vendorRepository = new VendorRepository();
+            var vendorsCollection = vendorRepository.Retrieve();
+            var expected = new List<string>()
+            {
+                "Message sent: Important message for: ABC Inc",
+                "Message sent: Important message for: XYZ Inc"
+            };
+            var vendors = vendorsCollection.ToList();
+            Console.WriteLine(vendors.Count);
+
+            //Act
+            var actual = Vendor.SendEmail(vendors, "Test Message");
+
+            //Assert
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+
+
+        [TestMethod()]
+        public void SendEmailTestArray()
+        {
+            //Arrange
+            var vendorRepository = new VendorRepository();
+            var vendorsCollection = vendorRepository.Retrieve();
+            var expected = new List<string>()
+            {
+                "Message sent: Important message for: ABC Inc",
+                "Message sent: Important message for: XYZ Inc"
+            };
+            var vendors = vendorsCollection.ToArray();
+            Console.WriteLine(vendors.Length);
+
+            //Act
+            var actual = Vendor.SendEmail(vendors, "Test Message");
+
+            //Assert
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void SendEmailTestDictionary()
+        {
+            //Arrange
+            var vendorRepository = new VendorRepository();
+            var vendorsCollection = vendorRepository.Retrieve();
+            var expected = new List<string>()
+            {
+                "Message sent: Important message for: ABC Inc",
+                "Message sent: Important message for: XYZ Inc"
+            };
+            var vendors = vendorsCollection.ToDictionary(v => v.CompanyName);
+
+            //Act
+            var actual = Vendor.SendEmail(vendors.Values, "Test Message");
+
+            //Assert
+            CollectionAssert.AreEqual(expected, actual);
         }
     }
 }
