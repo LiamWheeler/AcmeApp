@@ -158,5 +158,26 @@ namespace Acme.Biz.Tests
         //    v.CompanyName.Contains("Toy");
         //private string OrderCompaniesByName(Vendor v) => v.CompanyName;
 
+        [TestMethod()]
+        public void RetrieveAllLINQTest()
+        {
+            //Arrange
+            var repository = new VendorRepository();
+            var expected = 7;
+
+            //Act
+
+            var vendors = repository.RetrieveAll();
+
+            var vendorQuery = vendors
+                  .Where(v => v.CompanyName.Contains("Toy"))
+                  .Average(v => v.VendorId);
+                  
+
+
+            //Assert
+            Assert.AreEqual(expected, vendorQuery);
+        }
+
     }
 }
