@@ -139,17 +139,24 @@ namespace Acme.Biz.Tests
             //                  select v;
 
             //Method syntax
+            //var vendorQuery = vendors
+            //      .Where(FilterCompanies)
+            //      .OrderBy(OrderCompaniesByName);
+
+            //Lambda Expression
             var vendorQuery = vendors
-                  .Where(FilterCompanies)
-                  .OrderBy(OrderCompaniesByName);
+                  .Where(v => v.CompanyName.Contains("Toy"))
+                  .OrderBy(v => v.CompanyName);
+
 
             //Assert
             CollectionAssert.AreEqual(expected, vendorQuery.ToList());
         }
 
-        private bool FilterCompanies(Vendor v) =>
-            v.CompanyName.Contains("Toy");
-        private string OrderCompaniesByName(Vendor v) => v.CompanyName;
+        //Used for RetrieveAll Method Syntax
+        //private bool FilterCompanies(Vendor v) =>
+        //    v.CompanyName.Contains("Toy");
+        //private string OrderCompaniesByName(Vendor v) => v.CompanyName;
 
     }
 }
