@@ -111,7 +111,33 @@ namespace Acme.Biz.Tests
             CollectionAssert.AreEqual(expected, actual.ToList());
         }
 
+        [TestMethod()]
+        public void RetrieveAll()
+        {
+            //Arrange
+            var repository = new VendorRepository();
+            var expected = new List<Vendor>()
+            {
+                { new Vendor()
+                {VendorId = 8, CompanyName = "Car Toys Inc", Email = "car@xyz.com"  } },
+                { new Vendor()
+                { VendorId = 9, CompanyName = "Fun Toys Inc", Email = "fun@xyz.com" }},
+                {new Vendor()
+                { VendorId = 6, CompanyName = "Toy Blocks Inc", Email = "blocks@xyz.com" }},
+                {new Vendor()
+                {VendorId = 5, CompanyName = "Toys Inc", Email = "toy@xyz.com"  } }
+            };
 
+            //Act
+            var vendors = repository.RetrieveAll();
+            var vendorQuery = from v in vendors
+                              where v.CompanyName.Contains("Toy")
+                              orderby v.CompanyName
+                              select v;
+
+            //Assert
+            CollectionAssert.AreEqual(expected, vendorQuery.ToList());
+        }
 
     }
 }

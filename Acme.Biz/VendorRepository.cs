@@ -78,5 +78,22 @@ namespace Acme.Biz
                 yield return vendor;
             }
         }
+
+        public IEnumerable<Vendor> RetrieveAll()
+        {
+                vendors = new List<Vendor>();
+            {
+                vendors.Add(new Vendor() { VendorId = 1, CompanyName = "ABC Inc", Email = "abc@abc.com" });
+                vendors.Add(new Vendor() { VendorId = 2, CompanyName = "XYZ Inc", Email = "xyz@xyz.com" });
+                vendors.Add(new Vendor() { VendorId = 3, CompanyName = "EFG Inc", Email = "efg@xyz.com" });
+                vendors.Add(new Vendor() { VendorId = 4, CompanyName = "HIJ Inc", Email = "hij@xyz.com" });
+                vendors.Add(new Vendor() { VendorId = 5, CompanyName = "Toys Inc", Email = "toy@xyz.com" });
+                vendors.Add(new Vendor() { VendorId = 6, CompanyName = "Toy Blocks Inc", Email = "blocks@xyz.com" });
+                vendors.Add(new Vendor() { VendorId = 7, CompanyName = "Home Inc", Email = "home@xyz.com" });
+                vendors.Add(new Vendor() { VendorId = 8, CompanyName = "Car Toys Inc", Email = "car@xyz.com" });
+                vendors.Add(new Vendor() { VendorId = 9, CompanyName = "Fun Toys Inc", Email = "fun@xyz.com" });
+            }
+            return vendors;
+        }
     }
 }
